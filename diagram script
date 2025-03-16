@@ -1,0 +1,454 @@
+
+@startuml
+
+class Employee {
+    - INT employee_id
+    - VARCHAR last_name
+    - VARCHAR first_name
+    - DATE birthday
+    - INT address_id
+    - INT phone_id
+    - INT gov_id
+    - INT status_id
+    - INT position_id
+    - INT salary_id
+    + getEmployeeId()
+    + setEmployeeId(INT id)
+    + getLastName()
+    + setLastName(VARCHAR name)
+    + getFirstName()
+    + setFirstName(VARCHAR name)
+    + getBirthday()
+    + setBirthday(DATE date)
+    + getAddressId()
+    + setAddressId(INT id)
+    + getPhoneId()
+    + setPhoneId(INT id)
+    + getGovId()
+    + setGovId(INT id)
+    + getStatusId()
+    + setStatusId(INT id)
+    + getPositionId()
+    + setPositionId(INT id)
+    + getSalaryId()
+    + setSalaryId(INT id)
+}
+
+class Password {
+    - INT password_id
+    - INT login_id
+    - VARCHAR password_hash
+    - VARCHAR salt
+    + getPasswordId()
+    + setPasswordId(INT id)
+    + getLoginId()
+    + setLoginId(INT id)
+    + getPasswordHash()
+    + setPasswordHash(VARCHAR hash)
+    + getSalt()
+    + setSalt(VARCHAR salt)
+}
+
+class Login {
+    - INT login_id
+    - VARCHAR username
+    - INT role_id
+    - INT employee_id
+    - TIMESTAMP last_login
+    + getLoginId()
+    + setLoginId(INT id)
+    + getUsername()
+    + setUsername(VARCHAR name)
+    + getRoleId()
+    + setRoleId(INT id)
+    + getEmployeeId()
+    + setEmployeeId(INT id)
+    + getLastLogin()
+    + setLastLogin(TIMESTAMP time)
+}
+
+class Role {
+    - INT role_id
+    - ENUM rolename
+    + getRoleId()
+    + setRoleId(INT id)
+    + getRolename()
+    + setRolename(ENUM name)
+}
+
+class RolePermission {
+    - INT permission_id
+    - INT role_id
+    - VARCHAR permission_name
+    + getPermissionId()
+    + setPermissionId(INT id)
+    + getRoleId()
+    + setRoleId(INT id)
+    + getPermissionName()
+    + setPermissionName(VARCHAR name)
+}
+
+class LeaveRequest {
+    - INT leave_id
+    - INT employee_id
+    - DATE start_date
+    - DATE end_date
+    - ENUM leave_type
+    - DATE request_date
+    - ENUM status
+    - INT approver_id
+    - DATE updated_at
+    + getLeaveId()
+    + setLeaveId(INT id)
+    + getEmployeeId()
+    + setEmployeeId(INT id)
+    + getStartDate()
+    + setStartDate(DATE date)
+    + getEndDate()
+    + setEndDate(DATE date)
+    + getLeaveType()
+    + setLeaveType(ENUM type)
+    + getRequestDate()
+    + setRequestDate(DATE date)
+    + getStatus()
+    + setStatus(ENUM status)
+    + getApproverId()
+    + setApproverId(INT id)
+    + getUpdatedAt()
+    + setUpdatedAt(DATE date)
+}
+
+class LeaveHistory {
+    - INT leave_history_id
+    - INT employee_id
+    - ENUM leave_type
+    - INT total_days_calc
+    - DATE last_update
+    + getLeaveHistoryId()
+    + setLeaveHistoryId(INT id)
+    + getEmployeeId()
+    + setEmployeeId(INT id)
+    + getLeaveType()
+    + setLeaveType(ENUM type)
+    + getTotalDaysCalc()
+    + setTotalDaysCalc(INT days)
+    + getLastUpdate()
+    + setLastUpdate(DATE date)
+}
+
+class Approver {
+    - INT approver_id
+    - VARCHAR name
+    - INT position_id
+    + getApproverId()
+    + setApproverId(INT id)
+    + getName()
+    + setName(VARCHAR name)
+    + getPositionId()
+    + setPositionId(INT id)
+}
+
+class Salary {
+    - INT salary_id
+    - DECIMAL basic_salary
+    - VARCHAR frequency
+    - DECIMAL amount_calc
+    + getSalaryId()
+    + setSalaryId(INT id)
+    + getBasicSalary()
+    + setBasicSalary(DECIMAL salary)
+    + getFrequency()
+    + setFrequency(VARCHAR freq)
+    + getAmountCalc()
+    + setAmountCalc(DECIMAL amount)
+}
+
+class EmploymentStatus {
+    - INT status_id
+    - ENUM type
+    - TEXT description
+    + getStatusId()
+    + setStatusId(INT id)
+    + getType()
+    + setType(ENUM type)
+    + getDescription()
+    + setDescription(TEXT desc)
+}
+
+class Position {
+    - INT position_id
+    - VARCHAR name
+    - TEXT description
+    - INT department_id
+    + getPositionId()
+    + setPositionId(INT id)
+    + getName()
+    + setName(VARCHAR name)
+    + getDescription()
+    + setDescription(TEXT desc)
+    + getDepartmentId()
+    + setDepartmentId(INT id)
+}
+
+class Department {
+    - INT department_id
+    - VARCHAR name
+    - TEXT description
+    + getDepartmentId()
+    + setDepartmentId(INT id)
+    + getName()
+    + setName(VARCHAR name)
+    + getDescription()
+    + setDescription(TEXT desc)
+}
+
+class PositionAllowance {
+    - INT position_allowance_id
+    - INT position_id
+    - INT allowance_id
+    + getPositionAllowanceId()
+    + setPositionAllowanceId(INT id)
+    + getPositionId()
+    + setPositionId(INT id)
+    + getAllowanceId()
+    + setAllowanceId(INT id)
+}
+
+class Allowance {
+    - INT allowance_id
+    - ENUM allowance_type
+    - TEXT description
+    - DECIMAL amount
+    + getAllowanceId()
+    + setAllowanceId(INT id)
+    + getAllowanceType()
+    + setAllowanceType(ENUM type)
+    + getDescription()
+    + setDescription(TEXT desc)
+    + getAmount()
+    + setAmount(DECIMAL amount)
+}
+
+class Address {
+    - INT address_id
+    - VARCHAR street
+    - VARCHAR barangay
+    - VARCHAR city
+    - VARCHAR province
+    - INT zipcode
+    + getAddressId()
+    + setAddressId(INT id)
+    + getStreet()
+    + setStreet(VARCHAR street)
+    + getBarangay()
+    + setBarangay(VARCHAR barangay)
+    + getCity()
+    + setCity(VARCHAR city)
+    + getProvince()
+    + setProvince(VARCHAR province)
+    + getZipcode()
+    + setZipcode(INT zipcode)
+}
+
+class PhoneNumber {
+    - INT phone_id
+    - INT area_code
+    - INT number
+    + getPhoneId()
+    + setPhoneId(INT id)
+    + getAreaCode()
+    + setAreaCode(INT code)
+    + getNumber()
+    + setNumber(INT number)
+}
+
+class AreaCode {
+    - INT area_code
+    - VARCHAR region
+    + getAreaCode()
+    + setAreaCode(INT code)
+    + getRegion()
+    + setRegion(VARCHAR region)
+}
+
+class GovernmentID {
+    - VARCHAR sss
+    - VARCHAR philhealth
+    - VARCHAR pagibig
+    - VARCHAR tin
+    + getSSS()
+    + setSSS(VARCHAR sss)
+    + getPhilhealth()
+    + setPhilhealth(VARCHAR philhealth)
+    + getPagibig()
+    + setPagibig(VARCHAR pagibig)
+    + getTIN()
+    + setTIN(VARCHAR tin)
+}
+
+class Attendance {
+    - INT attendance_id
+    - INT employee_id
+    - DATE date
+    - TIME time_in
+    - TIME time_out
+    - INT regular_hours
+    + getAttendanceId()
+    + setAttendanceId(INT id)
+    + getEmployeeId()
+    + setEmployeeId(INT id)
+    + getDate()
+    + setDate(DATE date)
+    + getTimeIn()
+    + setTimeIn(TIME time)
+    + getTimeOut()
+    + setTimeOut(TIME time)
+    + getRegularHours()
+    + setRegularHours(INT hours)
+}
+
+class Overtime {
+    - INT overtime_id
+    - INT attendance_id
+    - INT overtime_hours_calc
+    - INT approver_id
+    - DATE updated_date
+    - INT ot_rate_id
+    + getOvertimeId()
+    + setOvertimeId(INT id)
+    + getAttendanceId()
+    + setAttendanceId(INT id)
+    + getOvertimeHoursCalc()
+    + setOvertimeHoursCalc(INT hours)
+    + getApproverId()
+    + setApproverId(INT id)
+    + getUpdatedDate()
+    + setUpdatedDate(DATE date)
+    + getOtRateId()
+    + setOtRateId(INT id)
+}
+
+class OvertimeRate {
+    - INT ot_rate_id
+    - ENUM type
+    - TEXT description
+    - DECIMAL overtime_multiplier
+    + getOtRateId()
+    + setOtRateId(INT id)
+    + getType()
+    + setType(ENUM type)
+    + getDescription()
+    + setDescription(TEXT desc)
+    + getOvertimeMultiplier()
+    + setOvertimeMultiplier(DECIMAL multiplier)
+}
+
+class Payroll {
+    - INT payroll_id
+    - INT employee_id
+    - DATE pay_period_start
+    - DATE pay_period_end
+    - INT attendance_id
+    - DECIMAL regular_salary_calc
+    - INT deduction_id
+    - INT allowance_id
+    - DECIMAL net_salary_calc
+    + getPayrollId()
+    + setPayrollId(INT id)
+    + getEmployeeId()
+    + setEmployeeId(INT id)
+    + getPayPeriodStart()
+    + setPayPeriodStart(DATE date)
+    + getPayPeriodEnd()
+    + setPayPeriodEnd(DATE date)
+    + getAttendanceId()
+    + setAttendanceId(INT id)
+    + getRegularSalaryCalc()
+    + setRegularSalaryCalc(DECIMAL salary)
+    + getDeductionId()
+    + setDeductionId(INT id)
+    + getAllowanceId()
+    + setAllowanceId(INT id)
+    + getNetSalaryCalc()
+    + setNetSalaryCalc(DECIMAL salary)
+}
+
+class Deduction {
+    - INT deduction_id
+    - INT payroll_id
+    - INT deduction_rate_id
+    - DECIMAL amount_calc
+    + getDeductionId()
+    + setDeductionId(INT id)
+    + getPayrollId()
+    + setPayrollId(INT id)
+    + getDeductionRateId()
+    + setDeductionRateId(INT id)
+    + getAmountCalc()
+    + setAmountCalc(DECIMAL amount)
+}
+
+class DeductionRate {
+    - INT deduction_rate_id
+    - ENUM type
+    - TEXT description
+    - DECIMAL min_income
+    - DECIMAL max_income
+    - DECIMAL deduction_rate
+    + getDeductionRateId()
+    + setDeductionRateId(INT id)
+    + getType()
+    + setType(ENUM type)
+    + getDescription()
+    + setDescription(TEXT desc)
+    + getMinIncome()
+    + setMinIncome(DECIMAL income)
+    + getMaxIncome()
+    + setMaxIncome(DECIMAL income)
+    + getDeductionRate()
+    + setDeductionRate(DECIMAL rate)
+}
+
+Employee --> Address : address_id
+Employee --> PhoneNumber : phone_id
+Employee --> GovernmentID : gov_id
+Employee --> EmploymentStatus : status_id
+Employee --> Position : position_id
+Employee --> Salary : salary_id
+
+Password --> Login : login_id
+
+Login --> Role : role_id
+Login --> Employee : employee_id
+
+RolePermission --> Role : role_id
+
+LeaveRequest --> Employee : employee_id
+LeaveRequest --> Approver : approver_id
+
+LeaveHistory --> Employee : employee_id
+
+Approver --> Position : position_id
+
+Position --> Department : department_id
+
+PositionAllowance --> Position : position_id
+PositionAllowance --> Allowance : allowance_id
+
+PhoneNumber --> AreaCode : area_code
+
+Attendance --> Employee : employee_id
+
+Overtime --> Attendance : attendance_id
+Overtime --> Approver : approver_id
+Overtime --> OvertimeRate : ot_rate_id
+
+Payroll --> Employee : employee_id
+Payroll --> Attendance : attendance_id
+Payroll --> Deduction : deduction_id
+Payroll --> Allowance : allowance_id
+
+Deduction --> Payroll : payroll_id
+Deduction --> DeductionRate : deduction_rate_id
+
+@enduml

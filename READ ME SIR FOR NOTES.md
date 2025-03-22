@@ -1,0 +1,16 @@
+# OOP
+
+USER CREDENTIALS FOR LOGIN
+
+Admin
+username = 1001
+password = 1234
+
+Users
+username = 1002
+password = 1234
+
+Other Users USERNAME LOGIC
+1003 AND SO ON HAVE ACCOUNT
+
+PASSWORD IS IN DEFAULT = 1234
